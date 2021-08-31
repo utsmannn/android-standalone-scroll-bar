@@ -195,7 +195,7 @@ class StandaloneScrollBar : FrameLayout {
             R.styleable.StandaloneScrollBar,
             defStyleAttr,
             0
-        ).use {
+        ).let {
             _customTrackDrawable =
                 it.getDrawable(R.styleable.StandaloneScrollBar_scrollbarTrackDrawable)
             _customThumbDrawable =
@@ -324,6 +324,7 @@ class StandaloneScrollBar : FrameLayout {
             lastScrollOffsetRange = scrollableView.scrollOffsetRange
             updateScrollbarState()
             if (shouldShow) {
+                orientationHelper.updateThumbOffsetLayout()
                 doOnLayout { orientationHelper.updateThumbOffsetLayout() }
             }
         }

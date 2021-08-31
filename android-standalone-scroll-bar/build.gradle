@@ -10,17 +10,8 @@ android {
         targetSdkVersion 28
         versionCode version_code
         versionName version_name
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -28,6 +19,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0' //version required
 }
 
 dependencies {
