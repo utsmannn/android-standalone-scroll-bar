@@ -18,6 +18,7 @@ class VerticalRecyclerViewActivity : AppCompatActivity() {
         }
         verticalScrollbar.apply {
             attachTo(verticalRecyclerView)
+            setCustomThumbDrawableResource(R.drawable.ic_launcher_background)
         }
         horizontalScrollbar.apply {
             attachTo(verticalRecyclerView)

@@ -1,9 +1,12 @@
 package com.hieupt.android.standalonescrollbar.viewhelper
 
 import android.annotation.SuppressLint
+import android.graphics.Canvas
 import com.hieupt.android.standalonescrollbar.HorizontalScrollableView
 import com.hieupt.android.standalonescrollbar.ScrollableView
 import com.hieupt.android.standalonescrollbar.view.HorizontalScrollView2
+import com.hieupt.android.standalonescrollbar.view.OnDrawListener
+import com.hieupt.android.standalonescrollbar.view.OnScrollChangedListener
 import com.hieupt.android.standalonescrollbar.view.ScrollView2
 
 /**
@@ -20,21 +23,26 @@ internal class HorizontalScrollViewHelper(
         get() = scrollView.height
 
     override val scrollRange: Int
-        get() = scrollView.calculateHorizontalScrollRange() + scrollView.paddingStart + scrollView.paddingEnd
+        get() = scrollView.calculateHorizontalScrollRange() + scrollView.paddingLeft + scrollView.paddingRight
 
     override val scrollOffset: Int
         get() = scrollView.calculateHorizontalScrollOffset()
 
     override fun addOnScrollChangedListener(onScrollChanged: (caller: ScrollableView) -> Unit) {
-        scrollView.addOnScrollListener { _, _, _, _ ->
-            onScrollChanged(this)
-        }
+        scrollView.addOnScrollListener(object : OnScrollChangedListener {
+            override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
+                onScrollChanged(this@HorizontalScrollViewHelper)
+            }
+        })
     }
 
     override fun addOnDraw(onDraw: (caller: ScrollableView) -> Unit) {
-        scrollView.addOnDrawListener {
-            onDraw(this)
-        }
+
+        scrollView.addOnDrawListener(object : OnDrawListener {
+            override fun onDraw(canvas: Canvas) {
+                onDraw(this@HorizontalScrollViewHelper)
+            }
+        })
     }
 
     override fun scrollTo(offset: Int) {

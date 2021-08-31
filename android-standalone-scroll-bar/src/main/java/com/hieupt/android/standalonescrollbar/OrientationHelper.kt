@@ -9,6 +9,7 @@ import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.math.MathUtils
+import androidx.core.view.ViewCompat
 import kotlin.math.abs
 
 internal sealed class OrientationHelper(internal val scrollBar: StandaloneScrollBar) {
@@ -34,7 +35,7 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
             scrollBar.customTrackDrawable ?: defaultTrackDrawable
         if (scrollBar.customTrackDrawable == null) {
             scrollBar.defaultTrackTint?.let {
-                trackView.backgroundTintList = it
+                ViewCompat.setBackgroundTintList(trackView, it)
             }
         }
 
@@ -42,7 +43,7 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
             scrollBar.customThumbDrawable ?: defaultThumbDrawable
         if (scrollBar.customThumbDrawable == null) {
             scrollBar.defaultThumbTint?.let {
-                thumbView.backgroundTintList = it
+                ViewCompat.setBackgroundTintList(thumbView, it)
             }
         }
     }
@@ -260,7 +261,7 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
             } else {
                 scrollBar.thumbView.background.intrinsicWidth
             }
-            return scrollBar.width - scrollBar.paddingStart - scrollBar.paddingEnd - thumbWidth
+            return scrollBar.width - scrollBar.paddingLeft - scrollBar.paddingRight - thumbWidth
         }
 
         override fun updateThumbOffsetLayout() {
@@ -268,8 +269,8 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
             val thumbWidth = scrollBar.thumbView.width
             if (scrollBar.isLayoutRtl) {
                 scrollBar.thumbView.updateLayout(
-                    left = scrollBar.width - scrollBar.paddingStart - scrollBar.paddingEnd - thumbStart - thumbWidth,
-                    right = scrollBar.width - scrollBar.paddingStart - scrollBar.paddingEnd - thumbStart,
+                    left = scrollBar.width - scrollBar.paddingLeft - scrollBar.paddingRight - thumbStart - thumbWidth,
+                    right = scrollBar.width - scrollBar.paddingLeft - scrollBar.paddingRight - thumbStart
                 )
             } else {
                 scrollBar.thumbView.updateLayout(left = thumbStart, right = thumbStart + thumbWidth)
@@ -339,9 +340,9 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
                         } else {
                             dragStartThumbOffset =
                                 if (scrollBar.isLayoutRtl) {
-                                    scrollBar.width - eventX.toInt() - scrollBar.paddingStart - scrollBar.thumbView.width / 2
+                                    scrollBar.width - eventX.toInt() - scrollBar.paddingLeft - scrollBar.thumbView.width / 2
                                 } else {
-                                    eventX.toInt() - scrollBar.paddingStart - scrollBar.thumbView.width / 2
+                                    eventX.toInt() - scrollBar.paddingLeft - scrollBar.thumbView.width / 2
                                 }
                             scrollBar.scrollToThumbOffset(dragStartThumbOffset)
                         }
@@ -385,9 +386,9 @@ internal sealed class OrientationHelper(internal val scrollBar: StandaloneScroll
                             dragStartX = eventX
                             dragStartThumbOffset =
                                 if (scrollBar.isLayoutRtl) {
-                                    scrollBar.width - eventX.toInt() - scrollBar.paddingStart - scrollBar.thumbView.width / 2
+                                    scrollBar.width - eventX.toInt() - scrollBar.paddingLeft - scrollBar.thumbView.width / 2
                                 } else {
-                                    eventX.toInt() - scrollBar.paddingStart - scrollBar.thumbView.width / 2
+                                    eventX.toInt() - scrollBar.paddingLeft - scrollBar.thumbView.width / 2
                                 }
                             scrollBar.scrollToThumbOffset(dragStartThumbOffset)
                         }

@@ -1,7 +1,10 @@
 package com.hieupt.android.standalonescrollbar.viewhelper
 
+import android.graphics.Canvas
 import com.hieupt.android.standalonescrollbar.ScrollableView
 import com.hieupt.android.standalonescrollbar.VerticalScrollableView
+import com.hieupt.android.standalonescrollbar.view.OnDrawListener
+import com.hieupt.android.standalonescrollbar.view.OnScrollChangedListener
 import com.hieupt.android.standalonescrollbar.view.ScrollView2
 
 /**
@@ -24,15 +27,19 @@ internal class VerticalScrollViewHelper(
         get() = scrollView.calculateVerticalScrollOffset()
 
     override fun addOnScrollChangedListener(onScrollChanged: (caller: ScrollableView) -> Unit) {
-        scrollView.addOnScrollListener { _, _, _, _ ->
-            onScrollChanged(this)
-        }
+        scrollView.addOnScrollListener(object : OnScrollChangedListener {
+            override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
+                onScrollChanged(this@VerticalScrollViewHelper)
+            }
+        })
     }
 
     override fun addOnDraw(onDraw: (caller: ScrollableView) -> Unit) {
-        scrollView.addOnDrawListener {
-            onDraw(this)
-        }
+        scrollView.addOnDrawListener(object : OnDrawListener {
+            override fun onDraw(canvas: Canvas) {
+                onDraw(this@VerticalScrollViewHelper)
+            }
+        })
     }
 
     override fun scrollTo(offset: Int) {

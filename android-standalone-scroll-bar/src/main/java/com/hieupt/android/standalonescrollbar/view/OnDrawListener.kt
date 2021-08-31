@@ -5,6 +5,6 @@ import android.graphics.Canvas
 /**
  * Created by HieuPT on 12/8/2020.
  */
-fun interface OnDrawListener {
+interface OnDrawListener {
     fun onDraw(canvas: Canvas)
 }

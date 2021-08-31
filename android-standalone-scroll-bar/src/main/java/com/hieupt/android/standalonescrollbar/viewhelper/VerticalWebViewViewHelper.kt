@@ -1,7 +1,10 @@
 package com.hieupt.android.standalonescrollbar.viewhelper
 
+import android.graphics.Canvas
 import com.hieupt.android.standalonescrollbar.ScrollableView
 import com.hieupt.android.standalonescrollbar.VerticalScrollableView
+import com.hieupt.android.standalonescrollbar.view.OnDrawListener
+import com.hieupt.android.standalonescrollbar.view.OnScrollChangedListener
 import com.hieupt.android.standalonescrollbar.view.WebView2
 
 /**
@@ -24,15 +27,19 @@ internal class VerticalWebViewViewHelper(
         get() = webView.calculateVerticalScrollOffset()
 
     override fun addOnScrollChangedListener(onScrollChanged: (caller: ScrollableView) -> Unit) {
-        webView.addOnScrollListener { _, _, _, _ ->
-            onScrollChanged(this)
-        }
+        webView.addOnScrollListener(object : OnScrollChangedListener {
+            override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
+                onScrollChanged(this@VerticalWebViewViewHelper)
+            }
+        })
     }
 
     override fun addOnDraw(onDraw: (caller: ScrollableView) -> Unit) {
-        webView.addOnDrawListener {
-            onDraw(this)
-        }
+        webView.addOnDrawListener(object : OnDrawListener {
+            override fun onDraw(canvas: Canvas) {
+                onDraw(this@VerticalWebViewViewHelper)
+            }
+        })
     }
 
     override fun scrollTo(offset: Int) {

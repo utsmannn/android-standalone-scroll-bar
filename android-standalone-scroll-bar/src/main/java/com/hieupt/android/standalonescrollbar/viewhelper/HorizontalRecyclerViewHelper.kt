@@ -3,6 +3,7 @@ package com.hieupt.android.standalonescrollbar.viewhelper
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.View
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ internal class HorizontalRecyclerViewHelper(
 ) : HorizontalScrollableView {
 
     private val isLayoutRtl: Boolean
-        get() = view.layoutDirection == View.LAYOUT_DIRECTION_RTL
+        get() = ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_RTL
 
     private val tempRect = Rect()
 
@@ -49,7 +50,7 @@ internal class HorizontalRecyclerViewHelper(
             return if (itemCount == 0 || itemWidth == 0) {
                 0
             } else {
-                view.paddingStart + itemCount * itemWidth + view.paddingEnd
+                view.paddingLeft + itemCount * itemWidth + view.paddingRight
             }
         }
 
@@ -62,16 +63,16 @@ internal class HorizontalRecyclerViewHelper(
             val itemWidth = itemWidth
             val firstItemStart = firstItemOffset
             return if (isLayoutRtl) {
-                view.paddingStart + firstItemPosition * itemWidth + firstItemStart - view.width
+                view.paddingLeft + firstItemPosition * itemWidth + firstItemStart - view.width
             } else {
-                view.paddingStart + firstItemPosition * itemWidth - firstItemStart
+                view.paddingLeft + firstItemPosition * itemWidth - firstItemStart
             }
         }
 
     override fun scrollTo(offset: Int) {
         // Stop any scroll in progress for RecyclerView.
         view.stopScroll()
-        val scrollOffset = offset - view.paddingStart
+        val scrollOffset = offset - view.paddingLeft
         val itemWidth = itemWidth
         // firstItemPosition should be non-negative even if paddingTop is greater than item height.
         val firstItemPosition = max(0, scrollOffset / itemWidth)
@@ -145,7 +146,7 @@ internal class HorizontalRecyclerViewHelper(
             scrollPosition *= linearLayoutManager.spanCount
         }
         // LinearLayoutManager actually takes offset from paddingStart instead of start of RecyclerView.
-        val scrollOffset = offset - view.paddingStart
+        val scrollOffset = offset - view.paddingLeft
         linearLayoutManager.scrollToPositionWithOffset(scrollPosition, scrollOffset)
     }
 
