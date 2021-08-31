@@ -4,8 +4,8 @@
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
         <option name="GRADLE_PROJECT_PATH" value=":android-standalone-scroll-bar" />
-        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.1.1" />
-        <option name="LAST_KNOWN_AGP_VERSION" value="4.1.1" />
+        <option name="LAST_SUCCESSFUL_SYNC_AGP_VERSION" value="4.2.2" />
+        <option name="LAST_KNOWN_AGP_VERSION" value="4.2.2" />
       </configuration>
     </facet>
     <facet type="android" name="Android">
@@ -27,8 +27,15 @@
     </facet>
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="4" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
-        <compilerSettings />
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
         <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../android-standalone-scroll-bar/build/tmp/kotlin-classes/debug" />
+          <option name="classpath" value="$MODULE_DIR$/../../../android-standalone-scroll-bar/build/intermediates/compile_r_class_jar/debug/R.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/3bb5567d5b912767d0cbf4be5e5f4727/material-1.2.1-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/5787b3f34c1a804573b454f16da62061/jetified-core-ktx-1.3.2-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/ec2e32e5e79bf8deba209d7115a0a759/jetified-kotlin-stdlib-1.3.72.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/79c9ba445498367db3929296dc73d6f0/jetified-kotlin-stdlib-common-1.3.72.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/8792a5a9616426aea80a2531561f52d3/jetified-annotations-13.0.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/3f18b644dc90e54f359501bf0f0cedaa/appcompat-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/574c2dc4df8815811a0fc43f9aebe184/cardview-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/2804bafe5ec826088a7d12d6b5449fb9/coordinatorlayout-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/5e36bad0461759af07585df0daeeac52/transition-1.2.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/e55fb91562c606bf8752dda1bbf5bffe/jetified-appcompat-resources-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/83494c4a2a732037964c8e015b12557a/vectordrawable-animated-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/be4aa3fde69ad2466a928ed01e1d914a/vectordrawable-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/06d79e3a529c2f04c31d006849445b52/jetified-viewpager2-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/3e8cc56bc4dde23bb9580e4209d57614/fragment-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/ace689cd4938777c50920f9984e739c7/drawerlayout-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/863a634827c165e15f653a15ae0ceb99/recyclerview-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/4a2d9cb2cda4d91bfa5e49daae790073/viewpager-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/c8b74bed5e6b1c87facf5e4d9faa407e/customview-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/7e82245aec59c19004ebe31d94332d19/loader-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/9cc023c4ceb4c082b8fca315c3d0a87b/jetified-activity-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/5243804c3771a3787a0bf97a952213cd/core-1.3.2-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/751be62fedda710169f9b0eed7f89786/lifecycle-runtime-2.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/c022740648a09de7dc880b432e944231/cursoradapter-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/9200391661d611b881a47ffce4ec7c6f/versionedparcelable-1.1.0-api.jar:/Users/ruangguru/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.0.0/42858b26cafdaa69b6149f45dfc2894007bc2c7a/collection-1.0.0.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/55ada6e2b44c3289d66dbe7e1d9e22e5/jetified-savedstate-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/61f163dbc9d155a5eb7b939862105321/lifecycle-livedata-2.0.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/e84633c8c83acffce9a7cab9afd73579/lifecycle-livedata-core-2.0.0-api.jar:/Users/ruangguru/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.0.0/e070ffae07452331bc5684734fce6831d531785c/lifecycle-common-2.0.0.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/07885d7ecf7359f13865e4025d80a4df/core-runtime-2.0.0-api.jar:/Users/ruangguru/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.0.0/bb21b9a11761451b51624ac428d1f1bb5deeac38/core-common-2.0.0.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/41a896546c7d57d1064f05ea3faff741/lifecycle-viewmodel-2.1.0-api.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/fb41bb693b21ab9414ebee87d6adb309/interpolator-1.0.0-api.jar:/Users/ruangguru/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar:/Users/ruangguru/.gradle/caches/transforms-2/files-2.1/80d0638e2cf08a81162015c9c56777a9/jetified-annotation-experimental-1.0.0-api.jar:/Users/ruangguru/Library/Android/sdk/platforms/android-30/android.jar:/Users/ruangguru/Library/Android/sdk/build-tools/30.0.2/core-lambda-stubs.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="android-standalone-scroll-bar_debug" />
           <option name="languageVersion" value="1.3" />
           <option name="apiVersion" value="1.3" />
           <option name="pluginOptions">
@@ -36,6 +43,9 @@
           </option>
           <option name="pluginClasspaths">
             <array />
+          </option>
+          <option name="errors">
+            <ArgumentParseErrors />
           </option>
         </compilerArguments>
       </configuration>
